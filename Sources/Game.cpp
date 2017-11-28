@@ -16,6 +16,7 @@ Vector2 cannonPos;      //!< 砲台の位置
 Vector2 bulletPos;      //!< 弾の位置
 Rect    targetRect;     //!< ターゲットの矩形
 int     score;          //!< スコア
+bool    barrel;         //!< 砲塔の移動
 
 
 // ゲーム開始時に呼ばれる関数です。
@@ -80,6 +81,20 @@ void Update()
     // 砲台の描画
     FillRect(Rect(cannonPos.x-10, -140, 20, 100), Color::blue);
     DrawImage("cannon.png", cannonPos);
+    
+    //大砲の上下移動
+    if (barrel == true) {
+        cannonPos.y += 1;
+        if (cannonPos.y > -70) {
+            barrel = false;
+        }
+    }
+    if (barrel == false) {
+        cannonPos.y -= 1;
+        if (cannonPos.y < -145) {
+            barrel = true;
+        }
+    }
 
     // ターゲットの描画
     FillRect(targetRect, Color::red);
