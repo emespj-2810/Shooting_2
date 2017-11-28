@@ -37,6 +37,7 @@ void Update()
     // 弾の発射
     if (bulletPos.x <= -999 && Input::GetKeyDown(KeyMask::Space)) {
         bulletPos = cannonPos + Vector2(50, 10);
+        PlaySound("se_maoudamashii_explosion03.mp3");
     }
 
     // 弾の移動
@@ -52,6 +53,7 @@ void Update()
         if (bulletPos.x >= 350) {
             bulletPos.x = -999;
         }
+        PlaySound("se_maoudamashii_explosion06.mp3");
     }
 
     // 背景の描画
